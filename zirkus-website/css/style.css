@@ -1,0 +1,1010 @@
+/* =========================================================
+   Zirkus Zickzack – gemeinsames Stylesheet
+   Stil: Memphis · Palette: Blau-Neon
+   ========================================================= */
+
+/* ---------- Schriften (liegen im eigenen Ordner, T1/T2) ---------- */
+@font-face {
+  font-family: "Archivo Black";
+  src: url("../fonts/archivo-black.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/poppins-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/poppins-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Farben aus dem Los (T4) + abgeleitete Töne ---------- */
+:root {
+  --dunkel: #0A0F2C;
+  --hell: #F2F5FF;
+  --akzent-1: #2F5BFF;
+  --akzent-2: #C6FF3D;
+
+  /* nur hellere / dunklere Töne der vier Losfarben */
+  --akzent-1-hell: #DCE4FF;
+  --akzent-1-mittel: #9DB2FF;
+  --akzent-1-dunkel: #1C3BC9;
+  --akzent-2-hell: #EDFFC2;
+  --dunkel-weich: #2A3050;
+
+  --schatten: 6px 6px 0 var(--dunkel);
+  --rand: 4px solid var(--dunkel);
+  --radius: 18px;
+  --breite: 72rem;
+}
+
+/* ---------- Grundlagen ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--dunkel);
+  background-color: var(--hell);
+  /* Memphis-Punkteraster */
+  background-image: radial-gradient(var(--akzent-1-hell) 2px, transparent 2.5px);
+  background-size: 28px 28px;
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Archivo Black", "Arial Black", sans-serif;
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+/* Memphis-Markierung unter Überschriften */
+.markiert {
+  background: linear-gradient(transparent 58%, var(--akzent-2) 58%, var(--akzent-2) 92%, transparent 92%);
+  padding: 0 0.15em;
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: 65ch;
+}
+
+a {
+  color: var(--akzent-1-dunkel);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-style: wavy;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* ---------- Tastaturfokus (T7) ---------- */
+:focus-visible {
+  outline: 4px solid var(--dunkel);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 9px var(--akzent-2);
+  border-radius: 6px;
+}
+
+/* ---------- "Zum Inhalt springen" (S6) ---------- */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -10rem;
+  z-index: 100;
+  padding: 0.8rem 1.2rem;
+  background: var(--akzent-2);
+  color: var(--dunkel);
+  font-weight: 700;
+  border: var(--rand);
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Header + Navigation (S3, S4) ---------- */
+.kopf {
+  background: var(--hell);
+  border-bottom: var(--rand);
+  position: relative;
+}
+
+/* Zickzack-Kante unter dem Header */
+.kopf::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -18px;
+  height: 14px;
+  background:
+    linear-gradient(135deg, var(--akzent-2) 33%, transparent 33%) 0 0 / 22px 14px,
+    linear-gradient(225deg, var(--akzent-2) 33%, transparent 33%) 0 0 / 22px 14px;
+  pointer-events: none;
+}
+
+.kopf-innen {
+  max-width: var(--breite);
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo img {
+  width: 230px;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border: 3px solid var(--dunkel);
+  border-radius: 999px;
+  background: var(--hell);
+  color: var(--dunkel);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.nav a:hover {
+  background: var(--akzent-2);
+  transform: rotate(-3deg);
+}
+
+.nav a[aria-current="page"] {
+  background: var(--dunkel);
+  color: var(--akzent-2);
+  box-shadow: 4px 4px 0 var(--akzent-1);
+}
+
+/* ---------- Layout ---------- */
+main {
+  display: block;
+}
+
+.bereich {
+  padding: 4.5rem 1.25rem;
+}
+
+.bereich-innen {
+  max-width: var(--breite);
+  margin: 0 auto;
+}
+
+.bereich--dunkel {
+  background: var(--dunkel);
+  color: var(--hell);
+}
+
+.bereich--dunkel h2,
+.bereich--dunkel h3 {
+  color: var(--akzent-2);
+}
+
+.bereich--dunkel a {
+  color: var(--akzent-2);
+}
+
+.bereich--blau {
+  background: var(--akzent-1);
+  color: var(--hell);
+}
+
+.bereich--blau a {
+  color: var(--hell);
+}
+
+.bereich--limette {
+  background: var(--akzent-2);
+}
+
+.bereich--limette .markiert {
+  background: linear-gradient(transparent 58%, var(--hell) 58%, var(--hell) 92%, transparent 92%);
+}
+
+.zwei-spalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 2rem;
+}
+
+.raster--zwei {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 2.5rem;
+}
+
+.seitenkopf {
+  padding: 4rem 1.25rem 3rem;
+  position: relative;
+}
+
+.seitenkopf p {
+  font-size: 1.3rem;
+}
+
+.einleitung {
+  font-size: 1.3rem;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: 3.5rem 1.25rem 4.5rem;
+  overflow: hidden;
+}
+
+.hero .zwei-spalten {
+  grid-template-columns: 1.05fr 1fr;
+}
+
+.hero-sticker {
+  display: inline-block;
+  background: var(--akzent-1);
+  color: var(--hell);
+  font-weight: 700;
+  padding: 0.3rem 0.9rem;
+  border: var(--rand);
+  border-radius: 999px;
+  transform: rotate(-4deg);
+  margin-bottom: 1rem;
+}
+
+.hero-text .unterzeile {
+  font-size: 1.35rem;
+}
+
+.hero-bild {
+  border: var(--rand);
+  border-radius: var(--radius);
+  box-shadow: 12px 12px 0 var(--akzent-1);
+  background: var(--akzent-1-hell);
+  transform: rotate(2deg);
+}
+
+/* Schwebende Memphis-Formen (Eye Candy) */
+.formen span {
+  position: absolute;
+  display: block;
+  border: 4px solid var(--dunkel);
+  animation: schweben 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.form-kreis {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--akzent-2);
+  top: 12%;
+  left: 46%;
+}
+
+.form-dreieck {
+  width: 0;
+  height: 0;
+  border: none !important;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 52px solid var(--akzent-1);
+  bottom: 10%;
+  left: 4%;
+  animation-delay: -2s !important;
+}
+
+.form-quadrat {
+  width: 40px;
+  height: 40px;
+  background: var(--akzent-1-mittel);
+  top: 6%;
+  right: 6%;
+  animation-delay: -4s !important;
+}
+
+.form-ring {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border-width: 10px !important;
+  border-color: var(--akzent-1) !important;
+  bottom: 6%;
+  right: 42%;
+  animation-delay: -1s !important;
+}
+
+@keyframes schweben {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(20deg);
+  }
+}
+
+/* ---------- Faktenleiste: Wann / Wo / Für wen ---------- */
+.fakten {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.fakten li {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--hell);
+  border: 3px solid var(--dunkel);
+  border-radius: 14px;
+  padding: 0.6rem 1rem;
+}
+
+.fakten img {
+  width: 44px;
+  height: 44px;
+  flex: none;
+}
+
+/* ---------- Knöpfe ---------- */
+.knopf {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  background: var(--akzent-2);
+  color: var(--dunkel);
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: var(--rand);
+  border-radius: 999px;
+  box-shadow: var(--schatten);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.knopf:hover {
+  transform: translate(-2px, -2px) rotate(-1deg);
+  box-shadow: 9px 9px 0 var(--dunkel);
+  text-decoration: none;
+}
+
+.knopf--hell {
+  background: var(--hell);
+}
+
+.knopf-reihe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* ---------- Karten (Artist:innen, Preise) ---------- */
+.karte {
+  background: var(--hell);
+  color: var(--dunkel);
+  border: var(--rand);
+  border-radius: var(--radius);
+  box-shadow: 8px 8px 0 var(--akzent-1);
+  padding: 1.25rem;
+  transition: transform 0.25s;
+}
+
+.karte:nth-child(odd) {
+  transform: rotate(-1.2deg);
+}
+
+.karte:nth-child(even) {
+  transform: rotate(1.2deg);
+}
+
+.karte:hover {
+  transform: rotate(0deg) translateY(-6px);
+}
+
+.karte img {
+  border: 3px solid var(--dunkel);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  background: var(--akzent-1-hell);
+}
+
+.karte h3 {
+  color: var(--dunkel);
+}
+
+.karte .karte-icon {
+  width: 72px;
+  border: none;
+  background: none;
+  margin-bottom: 0.5rem;
+}
+
+.bereich--dunkel .karte h3 {
+  color: var(--dunkel);
+}
+
+.karte .karte-icon {
+  width: 72px;
+  border: none;
+  background: none;
+  margin-bottom: 0.5rem;
+}
+
+.karte p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Eltern-Box ---------- */
+.eltern-box {
+  background: var(--hell);
+  border: var(--rand);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  box-shadow: 8px 8px 0 var(--dunkel);
+  position: relative;
+}
+
+.eltern-box::before {
+  content: "Für Eltern";
+  position: absolute;
+  top: -1.1rem;
+  left: 1.5rem;
+  background: var(--akzent-1);
+  color: var(--hell);
+  font-weight: 700;
+  padding: 0.15rem 0.8rem;
+  border: 3px solid var(--dunkel);
+  border-radius: 999px;
+  transform: rotate(-3deg);
+}
+
+.haken-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.haken-liste li {
+  padding-left: 2.2rem;
+  position: relative;
+  margin-bottom: 0.6rem;
+}
+
+.haken-liste li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  background: var(--akzent-2);
+  border: 3px solid var(--dunkel);
+  transform: rotate(45deg);
+}
+
+/* ---------- Bilder mit Unterschrift (M7) ---------- */
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-size: 1rem;
+  margin-top: 0.8rem;
+  padding-left: 0.8rem;
+  border-left: 6px solid var(--akzent-2);
+}
+
+.bild-rahmen {
+  border: var(--rand);
+  border-radius: var(--radius);
+  box-shadow: 10px 10px 0 var(--akzent-2);
+}
+
+.gif-rahmen {
+  border: var(--rand);
+  border-radius: 50%;
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  margin: 0 auto;
+  box-shadow: 8px 8px 0 var(--akzent-2);
+}
+
+/* ---------- Countdown ---------- */
+.countdown {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: var(--dunkel);
+  color: var(--akzent-2);
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1.35rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 12px;
+  transform: rotate(-1.5deg);
+}
+
+/* ---------- Programm-Tabelle (I6) ---------- */
+.tabelle-huelle {
+  overflow-x: auto;
+  border: var(--rand);
+  border-radius: var(--radius);
+  box-shadow: 10px 10px 0 var(--akzent-1);
+  background: var(--hell);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 34rem;
+}
+
+caption {
+  text-align: left;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--akzent-2);
+  border-bottom: var(--rand);
+}
+
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 2px dashed var(--akzent-1-mittel);
+}
+
+thead th {
+  background: var(--dunkel);
+  color: var(--hell);
+}
+
+tbody th {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--akzent-1-hell);
+}
+
+.pause-zeile {
+  background: var(--akzent-2-hell) !important;
+}
+
+/* ---------- Beschreibungsliste ---------- */
+.begriffe {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.6rem 1.5rem;
+  margin: 0;
+}
+
+.begriffe dt {
+  font-weight: 700;
+}
+
+.begriffe dd {
+  margin: 0;
+}
+
+/* ---------- Preise ---------- */
+.preis {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.karte--hervor {
+  background: var(--akzent-2);
+}
+
+/* ---------- Formular (I7) ---------- */
+.formular {
+  background: var(--hell);
+  color: var(--dunkel);
+  border: var(--rand);
+  border-radius: var(--radius);
+  box-shadow: 10px 10px 0 var(--dunkel);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 1.5rem;
+}
+
+.feld {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.feld--breit {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: var(--dunkel);
+  background: var(--hell);
+  border: 3px solid var(--dunkel);
+  border-radius: 12px;
+  padding: 0.65rem 0.8rem;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: var(--akzent-1);
+  flex: none;
+}
+
+.feld--check {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hinweis {
+  font-size: 1rem;
+}
+
+.pflicht {
+  color: var(--akzent-1-dunkel);
+}
+
+.danke {
+  display: none;
+  background: var(--akzent-2);
+  border: var(--rand);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--schatten);
+}
+
+.danke:target {
+  display: block;
+}
+
+/* ---------- FAQ mit details ---------- */
+details {
+  background: var(--hell);
+  color: var(--dunkel);
+  border: 3px solid var(--dunkel);
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  box-shadow: 5px 5px 0 var(--akzent-1);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 1rem 1.25rem;
+  list-style-position: inside;
+}
+
+details[open] summary {
+  border-bottom: 2px dashed var(--akzent-1-mittel);
+}
+
+details p {
+  padding: 1rem 1.25rem 0.25rem;
+  margin: 0;
+}
+
+/* ---------- Geschichte (Sticky Storytelling) ---------- */
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.story-bild {
+  position: sticky;
+  top: 2rem;
+}
+
+.zeitpunkt {
+  border-left: 6px solid var(--akzent-1);
+  padding: 0 0 2rem 1.5rem;
+  position: relative;
+}
+
+.zeitpunkt::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 0.3rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--akzent-2);
+  border: 4px solid var(--dunkel);
+}
+
+.jahr {
+  display: inline-block;
+  font-family: "Archivo Black", sans-serif;
+  background: var(--dunkel);
+  color: var(--akzent-2);
+  padding: 0.1rem 0.7rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Kringel-Trenner ---------- */
+.kringel {
+  width: min(100%, 420px);
+  margin: 0 0 1.5rem;
+}
+
+/* ---------- Bildnachweis ---------- */
+.nachweis {
+  padding-left: 1.2rem;
+}
+
+.nachweis li {
+  margin-bottom: 0.6rem;
+}
+
+/* ---------- 404 ---------- */
+.fehler-zahl {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(5rem, 18vw, 10rem);
+  line-height: 1;
+  color: var(--akzent-1);
+  -webkit-text-stroke: 4px var(--dunkel);
+  margin: 0;
+}
+
+/* ---------- Footer (S4) ---------- */
+.fuss {
+  background: var(--dunkel);
+  color: var(--hell);
+  padding: 3.5rem 1.25rem 2rem;
+  border-top: 8px solid var(--akzent-2);
+}
+
+.fuss-innen {
+  max-width: var(--breite);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.fuss img {
+  width: 210px;
+  margin-bottom: 1rem;
+}
+
+.fuss a {
+  color: var(--akzent-2);
+}
+
+.fuss ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fuss li {
+  margin-bottom: 0.4rem;
+}
+
+.fuss-titel {
+  font-family: "Archivo Black", sans-serif;
+  color: var(--akzent-2);
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+}
+
+.fuss-klein {
+  max-width: var(--breite);
+  margin: 2.5rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 2px dashed var(--dunkel-weich);
+  font-size: 0.95rem;
+}
+
+/* ---------- Responsiv (T6) ---------- */
+@media (max-width: 860px) {
+  .zwei-spalten,
+  .hero .zwei-spalten,
+  .story {
+    grid-template-columns: 1fr;
+  }
+
+  .story-bild {
+    position: static;
+  }
+
+  .fuss-innen {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-bild {
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 1.08rem;
+  }
+
+  .bereich {
+    padding: 3rem 1rem;
+  }
+
+  .logo img {
+    width: 190px;
+  }
+
+  .nav a {
+    padding: 0.35rem 0.8rem;
+  }
+
+  .formular {
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+  }
+
+  .begriffe {
+    grid-template-columns: 1fr;
+  }
+
+  .begriffe dd {
+    margin-bottom: 0.6rem;
+  }
+
+  .karte:nth-child(odd),
+  .karte:nth-child(even) {
+    transform: none;
+  }
+
+  .formen {
+    display: none;
+  }
+}
+
+/* ---------- Weniger Bewegung (T8) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .karte:hover,
+  .knopf:hover,
+  .nav a:hover {
+    transform: none;
+  }
+}
+
+/* ---------- Druckansicht (T9) ---------- */
+@media print {
+  .kopf .nav,
+  .fuss,
+  .skip-link,
+  .formen,
+  .knopf-reihe,
+  .kopf::after {
+    display: none !important;
+  }
+
+  body {
+    background: var(--hell);
+    color: var(--dunkel);
+    font-size: 12pt;
+  }
+
+  .bereich--dunkel,
+  .bereich--blau,
+  .bereich--limette {
+    background: var(--hell);
+    color: var(--dunkel);
+  }
+
+  .bereich--dunkel h2,
+  .bereich--dunkel h3 {
+    color: var(--dunkel);
+  }
+
+  .karte,
+  .hero-bild,
+  .bild-rahmen,
+  .tabelle-huelle,
+  .formular {
+    box-shadow: none;
+    transform: none;
+  }
+
+  a {
+    color: var(--dunkel);
+  }
+}
