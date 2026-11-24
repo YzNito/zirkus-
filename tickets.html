@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tickets & Preise – Zirkus Zickzack für Familien</title>
+  <meta name="description" content="Tickets für den Zirkus Zickzack: Kinder 12 €, Erwachsene 18 €, Familienkarte 49 €. Jetzt Plätze für Mai 2027 in Hamburg-Wandsbek sichern.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <header class="kopf">
+    <div class="kopf-innen">
+      <a class="logo" href="index.html"><img src="img/logo.svg" alt="Zirkus Zickzack – zur Startseite" width="418" height="140"></a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="programm.html">Programm</a></li>
+        <li><a href="story.html">Geschichte</a></li>
+        <li><a href="tickets.html" aria-current="page">Tickets</a></li>
+        <li><a href="infos.html">Infos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inhalt">
+
+    <section class="seitenkopf" aria-labelledby="titel">
+      <div class="bereich-innen">
+        <h1 id="titel"><span class="markiert">Tickets &amp; Preise</span></h1>
+        <p>Sucht euch eine Vorstellung aus, wählt die Anzahl der Karten und schon seid ihr dabei. Der Mitmach-Workshop nach der Show ist in jedem Ticket enthalten.</p>
+      </div>
+    </section>
+
+    <section class="bereich" aria-labelledby="preise">
+      <div class="bereich-innen">
+        <div class="danke" id="danke" tabindex="-1">
+          <h2>Danke! Eure Bestellung ist angekommen.</h2>
+          <p>Wir freuen uns auf euch im Zelt. Weil das hier ein Studienprojekt ist, werden aber keine echten Tickets verschickt.</p>
+        </div>
+        <h2 id="preise">Unsere Preise</h2>
+        <div class="raster">
+          <article class="karte">
+            <img src="img/icon-ticket.svg" alt="" width="120" height="120" class="karte-icon" loading="lazy" decoding="async">
+            <h3>Kinderkarte</h3>
+            <p class="preis">12&nbsp;€</p>
+            <p>Für Kinder von 3 bis 14 Jahren. Jüngere Geschwister sitzen kostenlos auf dem Schoß.</p>
+          </article>
+          <article class="karte">
+            <img src="img/icon-ticket.svg" alt="" width="120" height="120" class="karte-icon" loading="lazy" decoding="async">
+            <h3>Erwachsenenkarte</h3>
+            <p class="preis">18&nbsp;€</p>
+            <p>Für alle ab 15 Jahren. Schüler:innen und Studierende zahlen mit Ausweis 14 Euro.</p>
+          </article>
+          <article class="karte karte--hervor">
+            <img src="img/icon-stern.svg" alt="" width="120" height="120" class="karte-icon" loading="lazy" decoding="async">
+            <h3>Familienkarte</h3>
+            <p class="preis">49&nbsp;€</p>
+            <p>Zwei Erwachsene und zwei Kinder. Jedes weitere Kind kostet nur 8 Euro.</p>
+          </article>
+          <article class="karte">
+            <img src="img/icon-zelt.svg" alt="" width="120" height="120" class="karte-icon" loading="lazy" decoding="async">
+            <h3>Geburtstagspaket</h3>
+            <p class="preis">99&nbsp;€</p>
+            <p>Bis zu acht Kinder und zwei Erwachsene, dazu Popcorn für alle und ein Foto mit Robbe Rolf.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bereich bereich--blau" aria-labelledby="bestellen">
+      <div class="bereich-innen">
+        <h2 id="bestellen">Tickets bestellen</h2>
+        <p>Felder mit Sternchen (<span aria-hidden="true">*</span>) müssen ausgefüllt werden.</p>
+        <form class="formular" action="tickets.html#danke" method="get">
+          <div class="feld feld--breit">
+            <label for="vorstellung">Welche Vorstellung? *</label>
+            <select id="vorstellung" name="vorstellung" required>
+              <option value="">Bitte auswählen</option>
+              <option value="2027-05-15T15:00">Sa 15. Mai, 15 Uhr (Premiere)</option>
+              <option value="2027-05-16T11:00">So 16. Mai, 11 Uhr</option>
+              <option value="2027-05-16T15:00">So 16. Mai, 15 Uhr</option>
+              <option value="2027-05-19T16:00">Mi 19. Mai, 16 Uhr</option>
+              <option value="2027-05-21T16:00">Fr 21. Mai, 16 Uhr</option>
+              <option value="2027-05-22T11:00">Sa 22. Mai, 11 Uhr</option>
+              <option value="2027-05-22T15:00">Sa 22. Mai, 15 Uhr</option>
+              <option value="2027-05-26T16:00">Mi 26. Mai, 16 Uhr</option>
+              <option value="2027-05-29T11:00">Sa 29. Mai, 11 Uhr</option>
+              <option value="2027-05-30T15:00">So 30. Mai, 15 Uhr (letzte Show)</option>
+            </select>
+          </div>
+          <div class="feld">
+            <label for="kinder">Anzahl Kinder *</label>
+            <input id="kinder" name="kinder" type="number" min="0" max="10" value="1" required>
+          </div>
+          <div class="feld">
+            <label for="erwachsene">Anzahl Erwachsene *</label>
+            <input id="erwachsene" name="erwachsene" type="number" min="1" max="10" value="1" required>
+          </div>
+          <div class="feld">
+            <label for="name">Dein Name *</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="feld">
+            <label for="email">E-Mail-Adresse *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="feld feld--breit">
+            <label for="nachricht">Noch etwas, das wir wissen sollten?</label>
+            <textarea id="nachricht" name="nachricht" rows="3"></textarea>
+          </div>
+          <div class="feld feld--breit feld--check">
+            <input id="rollstuhl" name="rollstuhl" type="checkbox" value="ja">
+            <label for="rollstuhl">Wir brauchen einen Rollstuhlplatz</label>
+          </div>
+          <div class="feld feld--breit">
+            <p class="hinweis">Hinweis: Das ist ein Studienprojekt. Es werden keine echten Tickets verkauft und keine Daten gespeichert.</p>
+            <button class="knopf" type="submit">Tickets bestellen</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="bereich" aria-labelledby="gut">
+      <div class="bereich-innen zwei-spalten">
+        <div>
+          <h2 id="gut"><span class="markiert">Gut zu wissen</span></h2>
+          <ul class="haken-liste">
+            <li>Die Zirkuskasse öffnet eine Stunde vor jeder Vorstellung. Dort gibt es Restkarten.</li>
+            <li>Ihr könnt bis drei Tage vor der Show kostenlos umbuchen.</li>
+            <li>Für Rollstuhlfahrer:innen gibt es Plätze in der ersten Reihe, die Begleitperson ist frei.</li>
+            <li>Schulklassen und Kitas melden sich bitte per E-Mail für einen Gruppenpreis.</li>
+          </ul>
+        </div>
+        <img src="img/popcorn.png" alt="Ein gestreifter Popcorn-Becher voller Popcorn" width="500" height="500" loading="lazy" decoding="async">
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="fuss">
+    <div class="fuss-innen">
+      <div>
+        <img src="img/logo-hell.svg" alt="Zirkus Zickzack" width="418" height="140" loading="lazy" decoding="async">
+        <p>Der bunteste Kinderzirkus der Stadt: Clowns, Akrobatik und Jonglage für Kinder von 6 bis 10 und ihre Großen. Vom 15. bis 30. Mai 2027 auf der Kringelwiese in Hamburg-Wandsbek.</p>
+      </div>
+      <div>
+        <p class="fuss-titel">Seiten</p>
+        <ul>
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="programm.html">Programm</a></li>
+          <li><a href="story.html">Unsere Geschichte</a></li>
+          <li><a href="tickets.html">Tickets &amp; Preise</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="fuss-titel">Gut zu wissen</p>
+        <ul>
+          <li><a href="infos.html#anfahrt">Anfahrt</a></li>
+          <li><a href="infos.html#faq">Häufige Fragen</a></li>
+          <li><a href="infos.html#impressum">Impressum</a></li>
+          <li><a href="infos.html#bildnachweis">Bildnachweis</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fuss-klein">Studienprojekt der Kunstschule Wandsbek, keine echte Veranstaltung. Alle Namen, Orte und Termine sind erfunden.</p>
+  </footer>
+</body>
+</html>
